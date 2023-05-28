@@ -1,0 +1,20 @@
+.img-container img {
+  width: 250px !important;
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.project-item-description-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* Media query for medium and small screen devices */
+@media (max-width: 950px) {
+  .img-container img {
+    width: 100% !important;
+    max-height: 200px;
+  }
+}
