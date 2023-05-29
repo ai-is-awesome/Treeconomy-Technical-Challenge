@@ -7,8 +7,14 @@ Treeconomy's Technical Challenge
 ## About the React codebase
 
 I've kept the state management really simple and used React's useState hook with React Query to handle the state and requests. react-query makes it really simple to manage caching and synchronization of server state and api data.
+
+The business logic resides in services.js. Services include function that performs data processing(sorting and formatting the data) and get method for api calls.
+
 However, using this approach can have several consequences. Some of them are:
-Performance Issues: Even though this is a very simple application written in React, the useState hook re-renders the component(or components if the state whose state is changing is also rendering child components). Since our state is stored at the app level, the frequency of clicking purchase button directly affects the performance of the app because changes in the state `processedData` will re-render all the project-items instead of just re-rendering the single project item whose purchase state is being affected.
+
+1. Performance Issues: Even though this is a very simple application written in React, the useState hook re-renders the component(or components if the state whose state is changing is also rendering child components). Since our state is stored at the app level, the frequency of clicking purchase button directly affects the performance of the app because changes in the state `processedData` will re-render all the project-items instead of just re-rendering the single project item whose purchase state is being affected.
+
+2. Deep prop drilling: Prop drilling the purchase state change from app to purchase button can lead to component coupling and code maintainability issues. Deeply nested components becomes tightly coupled to the structure and hierarchy of the intermediate components. An effective way to fix this issue is using some sort of dependency injection like useContext hook.
 
 # Overview and Steps
 
